@@ -5,14 +5,17 @@ on:
   pull_request:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
+  TruffleHog:
+  runs-on: ubuntu-latest
+  steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Secret Scanning
-      uses: trufflesecurity/trufflehog@main
+    - name: TruffleHog OSS
+      uses: trufflesecurity/trufflehog@v3.4.3
       with:
-        extra_args: --debug --only-verified
+        path: ./
+        base: ${{ github.event.repository.default_branch }}
+        head: HEAD
+        extra_args: --debug
