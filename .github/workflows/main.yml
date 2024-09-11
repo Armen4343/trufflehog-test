@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0  # if we don't set this to 0 it can leave secrets in previus commits.
       - name: TruffleHog OSS
-        uuses: trufflesecurity/trufflehog@main
+        uses: trufflesecurity/trufflehog@main
         with:
           base: ""
           head: ${{ github.ref_name }}
